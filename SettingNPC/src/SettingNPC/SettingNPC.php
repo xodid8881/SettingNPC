@@ -70,6 +70,7 @@ final class SettingNPC{
         ROOT_USER USER
         */
         $this->npcdb [$npcname] ["CoolTime"] = "false";
+        $this->npcdb [$npcname] ["Cool"] = 0;
         return true;
     }
 
