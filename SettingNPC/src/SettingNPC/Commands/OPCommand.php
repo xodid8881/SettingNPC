@@ -32,7 +32,7 @@ final class OPCommand extends Command{
             return true;
         } else {
             sleep(1);
-            $this->api->MarketSettingTaskEvent($sender);
+            $this->api->CreateEvent ($sender);
             return true;
         }
         return true;
