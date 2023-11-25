@@ -38,6 +38,10 @@ class NPCClick implements Listener
                         $this->chat [$damager->getName ()] = date("YmdHis",strtotime ("+3 seconds"));
                         return true;
                     }
+                    
+                    $CoolTime = $this->npcdb [$npcname] ["CoolTime"];
+                    $Cool = $this->npcdb [$npcname] ["Cool"];
+                    
                     if (date("YmdHis") - $this->chat [$damager->getName ()] < 3) {
                         $damager->sendMessage ( SettingNPC::TAG . "이용 쿨타임이 지나지 않아 불가능합니다." );
                         return true;
