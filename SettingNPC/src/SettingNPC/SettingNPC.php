@@ -23,6 +23,8 @@ use pocketmine\entity\Human;
 use pocketmine\entity\EntityFactory;
 use pocketmine\entity\Entity;
 
+use SettingNPC\form\CreateForm;
+
 use function explode;
 
 final class SettingNPC{
