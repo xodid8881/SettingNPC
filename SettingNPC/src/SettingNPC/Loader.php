@@ -41,8 +41,8 @@ final class Loader extends PluginBase{
         );
 
         $server = $this->getServer();
+        $server->getPluginManager()->registerEvents(new NPCClick($this), $this);
         $cmdMap = $server->getCommandMap();
-
         $cmdMap->register('SettingNPC', new SettingNPCCommand());
     }
 
