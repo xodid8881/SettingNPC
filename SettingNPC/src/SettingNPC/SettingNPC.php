@@ -64,7 +64,7 @@ final class SettingNPC{
         $npc->setNameTagAlwaysVisible();
         $npc->spawnToAll();
         $this->npcdb [$npcname] ["Command"] = $command;
-        $this->npcdb [$npcname] ["Permissions"] = "USER";
+        $this->npcdb [$npcname] ["Permissions"] = "user";
         $this->npcdb [$npcname] ["CoolTime"] = "false";
         return true;
     }
