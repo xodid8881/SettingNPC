@@ -63,3 +63,15 @@ final class SettingNPC{
         $npc->spawnToAll();
         return true;
     }
+
+    public function CreateEvent (Player $player) : void{
+        Loader::getInstance()->getScheduler()->scheduleDelayedTask(new ClosureTask(function() use($player) : void {
+            if($player->isOnline()) {
+                $this->CreateUI($player);
+            }
+        }), 20);
+    }
+
+    public function CreateUI(Player $player) : void{
+        $player->sendForm(new CreateForm());
+    }
