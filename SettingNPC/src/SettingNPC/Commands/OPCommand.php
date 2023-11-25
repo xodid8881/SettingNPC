@@ -9,7 +9,7 @@ use pocketmine\permission\DefaultPermissions;
 use pocketmine\player\Player;
 use SettingNPC\SettingNPC;
 
-final class OPCommand extends Command{
+final class SettingCommand extends Command{
 
     private SettingNPC $api;
     /**
