@@ -15,6 +15,8 @@ use ReflectionException;
 
 use SettingNPC\Commands\SettingNPCCommand;
 
+use SettingNPC\EventListener\NPCClick;
+
 use function strtolower;
 
 final class Loader extends PluginBase{
