@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Market;
+namespace SettingNPC;
 
 use JsonException;
 use muqsit\invmenu\InvMenu;
