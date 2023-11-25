@@ -54,7 +54,7 @@ final class SettingNPC{
     private $chat;
     public const TAG = "§c【 §fSettingNPC §c】 §7: ";
 
-    public function ShopEntitySpawn($player,$npcname, $command){
+    public function EntitySpawn($player,$npcname, $command){
         $pos = $player->getPosition();
         $loc = $player->getLocation();
         $loc = new Location($pos->getFloorX() + 0.5, $pos->getFloorY() + 0.05, $pos->getFloorZ() + 0.5,
