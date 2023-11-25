@@ -38,7 +38,7 @@ class NPCClick implements Listener
                         return true;
                     }
                     if (date("YmdHis") - $this->chat [$name] < 3) {
-                        $player->sendMessage ( Market::TAG . "이용 쿨타임이 지나지 않아 불가능합니다." );
+                        $player->sendMessage ( SettingNPC::TAG . "이용 쿨타임이 지나지 않아 불가능합니다." );
                         return true;
                     } else {
                         Server::getInstance()->getCommandMap ()->dispatch ( $damager, $command );
