@@ -54,7 +54,7 @@ final class SettingNPC{
     private $chat;
     public const TAG = "§c【 §fSettingNPC §c】 §7: ";
 
-    public function ShopEntitySpawn($player,$npcname){
+    public function ShopEntitySpawn($player,$npcname, $command){
         $pos = $player->getPosition();
         $loc = $player->getLocation();
         $loc = new Location($pos->getFloorX() + 0.5, $pos->getFloorY() + 0.05, $pos->getFloorZ() + 0.5,
@@ -63,6 +63,9 @@ final class SettingNPC{
         $npc->setNameTag($npcname);
         $npc->setNameTagAlwaysVisible();
         $npc->spawnToAll();
+        $this->npcdb [$npcname] ["Command"] = $command;
+        $this->npcdb [$npcname] ["Permissions"] = "USER";
+        $this->npcdb [$npcname] ["CoolTime"] = "false";
         return true;
     }
 
