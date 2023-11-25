@@ -25,7 +25,6 @@ class NPCClick implements Listener
             if ($entity->getNameTag() != null){
                 if (isset($this->npcdb [$entity->getNameTag()])){
                     $event->cancel();
-                    $command = $this->npcdb [$npcname] ["Command"];
                 }
             }
         }
