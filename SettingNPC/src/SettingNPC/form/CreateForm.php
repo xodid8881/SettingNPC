@@ -38,7 +38,7 @@ final class CreateForm implements Form{
             $player->sendMessage(SettingNPC::TAG . '빈칸을 채워주세요.');
             return;
         }
-        $api->ShopEntitySpawn($player,$data[0],$data[1]);
+        $api->EntitySpawn($player,$data[0],$data[1]);
         
     }
 }
