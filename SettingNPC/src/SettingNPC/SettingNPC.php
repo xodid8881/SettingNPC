@@ -5,10 +5,6 @@ declare(strict_types=1);
 namespace SettingNPC;
 
 use JsonException;
-use muqsit\invmenu\InvMenu;
-use muqsit\invmenu\transaction\InvMenuTransaction;
-use muqsit\invmenu\transaction\InvMenuTransactionResult;
-use muqsit\invmenu\type\InvMenuTypeIds;
 use pocketmine\block\VanillaBlocks;
 use pocketmine\item\VanillaItems;
 use pocketmine\item\Item;
@@ -55,3 +51,15 @@ final class SettingNPC{
     
     private $chat;
     public const TAG = "§c【 §fSettingNPC §c】 §7: ";
+
+    public function ShopEntitySpawn($player,$npcname){
+        $pos = $player->getPosition();
+        $loc = $player->getLocation();
+        $loc = new Location($pos->getFloorX() + 0.5, $pos->getFloorY() + 0.05, $pos->getFloorZ() + 0.5,
+        $pos->getWorld(), $loc->getYaw(), $loc->getPitch());
+        $npc = new Human($loc, $player->getSkin());
+        $npc->setNameTag($npcname);
+        $npc->setNameTagAlwaysVisible();
+        $npc->spawnToAll();
+        return true;
+    }
