@@ -1,17 +1,17 @@
 <?php
 declare(strict_types=1);
 
-namespace Market\Commands;
+namespace SettingNPC\Commands;
 
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\permission\DefaultPermissions;
 use pocketmine\player\Player;
-use Market\Market;
+use SettingNPC\SettingNPC;
 
 final class OPCommand extends Command{
 
-    private Market $api;
+    private SettingNPC $api;
     /**
      * @var string[]
      * @phpstan-var  array<string, string>
@@ -19,16 +19,16 @@ final class OPCommand extends Command{
     private array $chat = [];
 
     public function __construct(){
-        parent::__construct('시장관리', '시장관리 명령어.', '/시장관리');
+        parent::__construct('커스텀엔피시', '커스텀엔피시 명령어.', '/커스텀엔피시');
         $this->setPermission(DefaultPermissions::ROOT_OPERATOR);
-        $this->api = Market::getInstance();
+        $this->api = SettingNPC::getInstance();
     }
 
     public function execute(CommandSender $sender, string $commandLabel, array $args) : bool{
         if(!$sender instanceof Player) return true;
         $name = $sender->getName();
         if (!$sender->hasPermission(DefaultPermissions::ROOT_OPERATOR)) {
-            $player->sendMessage( Market::TAG . "권한이 없습니다.");
+            $player->sendMessage( SettingNPC::TAG . "권한이 없습니다.");
             return true;
         } else {
             sleep(1);
