@@ -1,0 +1,5 @@
+name: SettingNPC
+author: HWABAEG
+main: SettingNPC\Loader
+version: B1
+api: [5.0.0]
