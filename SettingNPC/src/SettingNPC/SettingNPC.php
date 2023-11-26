@@ -27,6 +27,7 @@ use pocketmine\entity\Location;
 use SettingNPC\form\CreateForm;
 use SettingNPC\form\SettingForm;
 use SettingNPC\form\DeleteForm;
+use SettingNPC\form\SettingListForm;
 
 use function explode;
 
@@ -118,6 +119,18 @@ final class SettingNPC{
     }
 
     public function DeleteUI(Player $player) : void{
-        $player->sendForm(new DeleteForm();
+        $player->sendForm(new DeleteForm());
+    }
+
+    public function SettingListEvent (Player $player) : void{
+        Loader::getInstance()->getScheduler()->scheduleDelayedTask(new ClosureTask(function() use($player) : void {
+            if($player->isOnline()) {
+                $this->SettingListUI($player);
+            }
+        }), 20);
+    }
+
+    public function SettingListUI(Player $player) : void{
+        $player->sendForm(new SettingListForm());
     }
 }
