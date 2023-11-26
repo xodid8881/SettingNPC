@@ -85,3 +85,4 @@ final class SettingNPC{
     public function CreateUI(Player $player) : void{
         $player->sendForm(new CreateForm());
     }
+}
