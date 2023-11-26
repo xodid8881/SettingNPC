@@ -69,7 +69,7 @@ final class SettingNPC{
     public function EntitySpawn($player,$npcname, $command){
         $pos = $player->getPosition();
         $loc = $player->getLocation();
-        $loc = new Location($pos->getFloorX() + 0.5, $pos->getFloorY() + 0.05, $pos->getFloorZ() + 0.5,
+        $loc = new Location($pos->getFloorX() + 0.5, $pos->getFloorY() + 0.5, $pos->getFloorZ() + 0.5,
         $pos->getWorld(), $loc->getYaw(), $loc->getPitch());
         $npc = new Human($loc, $player->getSkin());
         $npc->setNameTag($npcname);
@@ -99,7 +99,7 @@ final class SettingNPC{
     }
 
     public function SettingEvent (Player $player,String $text) : void{
-        Loader::getInstance()->getScheduler()->scheduleDelayedTask(new ClosureTask(function() use($player) : void {
+        Loader::getInstance()->getScheduler()->scheduleDelayedTask(new ClosureTask(function() use($player,$text) : void {
             if($player->isOnline()) {
                 $this->SettingUI($player,$text);
             }

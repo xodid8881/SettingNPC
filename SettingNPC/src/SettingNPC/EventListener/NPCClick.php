@@ -23,20 +23,20 @@ class NPCClick implements Listener
         $damager = $event->getDamager ();
         if (!$damager instanceof Player) {
             if ($entity->getNameTag() != null){
-                if (isset($this->npcdb [$entity->getNameTag()])){
+                if (isset($api->npcdb [$entity->getNameTag()])){
                     $event->cancel();
                 }
             }
         }
         if ($damager instanceof Player) {
             if ($entity->getNameTag() != null){
-                if (isset($this->npcdb [$entity->getNameTag()])){
+                if (isset($api->npcdb [$entity->getNameTag()])){
                     $event->cancel();
-                    $command = $this->npcdb [$entity->getNameTag()] ["Command"];
-                    $CoolTime = $this->npcdb [$entity->getNameTag()] ["CoolTime"];
-                    $Cool = (int)$this->npcdb [$entity->getNameTag()] ["Cool"];
+                    $command = $api->npcdb [$entity->getNameTag()] ["Command"];
+                    $CoolTime = $api->npcdb [$entity->getNameTag()] ["CoolTime"];
+                    $Cool = (int)$api->npcdb [$entity->getNameTag()] ["Cool"];
                     if ($CoolTime == "false"){
-                        $permissions = $this->npcdb [$entity->getNameTag()] ["Permissions"];
+                        $permissions = $api->npcdb [$entity->getNameTag()] ["Permissions"];
                         if ($permissions == "ROOT_OPERATOR"){
                             if (!$damager->hasPermission(DefaultPermissions::ROOT_OPERATOR)) {
                                 $damager->sendMessage(SettingNPC::TAG . "권한이 없습니다.");
@@ -57,7 +57,7 @@ class NPCClick implements Listener
                             $damager->sendMessage (SettingNPC::TAG . "이용 쿨타임이 지나지 않아 불가능합니다." );
                             return true;
                         } else {
-                            $permissions = $this->npcdb [$entity->getNameTag()] ["Permissions"];
+                            $permissions = $api->npcdb [$entity->getNameTag()] ["Permissions"];
                             if ($permissions == "ROOT_OPERATOR"){
                                 if (!$damager->hasPermission(DefaultPermissions::ROOT_OPERATOR)) {
                                     $damager->sendMessage(SettingNPC::TAG . "권한이 없습니다.");

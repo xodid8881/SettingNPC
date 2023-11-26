@@ -8,6 +8,7 @@ use pocketmine\form\Form;
 use pocketmine\player\Player;
 use SettingNPC\SettingNPC;
 use function strtolower;
+use pocketmine\permission\DefaultPermissions;
 
 final class SettingForm implements Form{
 
@@ -42,14 +43,14 @@ final class SettingForm implements Form{
             return;
         }
         if ($data[0] == true){
-            $this->npcdb [$this->text] ["Permissions"] = "ROOT_OPERATOR";
+            $api->npcdb [$this->text] ["Permissions"] = "ROOT_OPERATOR";
         } else {
-            $this->npcdb [$this->text] ["Permissions"] = "ROOT_USER";
+            $api->npcdb [$this->text] ["Permissions"] = "ROOT_USER";
         }
         if ($data[1] == true){
-            $this->npcdb [$this->text] ["CoolTime"] = "true";
+            $api->npcdb [$this->text] ["CoolTime"] = "true";
         } else {
-            $this->npcdb [$this->text] ["CoolTime"] = "false";
+            $api->npcdb [$this->text] ["CoolTime"] = "false";
         }
         $player->sendMessage(SettingNPC::TAG . "엔피시 설정을 완료했습니다.");
     }

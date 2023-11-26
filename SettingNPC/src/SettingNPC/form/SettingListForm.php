@@ -8,6 +8,7 @@ use pocketmine\form\Form;
 use pocketmine\player\Player;
 use SettingNPC\SettingNPC;
 use function strtolower;
+use pocketmine\permission\DefaultPermissions;
 
 final class SettingListForm implements Form{
 
@@ -37,19 +38,7 @@ final class SettingListForm implements Form{
             foreach($api->getLists() as $Name){
                 array_push($arr, $Name);
             }
-            if (! isset ( $this->chat [$name] )) {
-                $this->api->SettingEvent ($sender,$arr[$data]);
-                $this->chat [$name] = date("YmdHis",strtotime ("+3 seconds"));
-                return true;
-            }
-            if (date("YmdHis") - $this->chat [$name] < 3) {
-                $sender->sendMessage (SettingNPC::TAG . "이용 쿨타임이 지나지 않아 불가능합니다.");
-                return true;
-            } else {
-                $this->api->SettingEvent ($sender,$arr[$data]);
-                $this->chat [$name] = date("YmdHis",strtotime ("+3 seconds"));
-                return true;
-            }
+            $api->SettingEvent ($player,(String) $arr[$data]);
             return;
         }
     }

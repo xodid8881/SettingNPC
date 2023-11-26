@@ -8,6 +8,7 @@ use pocketmine\form\Form;
 use pocketmine\player\Player;
 use SettingNPC\SettingNPC;
 use function strtolower;
+use pocketmine\permission\DefaultPermissions;
 
 final class CreateForm implements Form{
 
