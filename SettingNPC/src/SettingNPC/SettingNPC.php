@@ -22,8 +22,11 @@ use pocketmine\permission\DefaultPermissions;
 use pocketmine\entity\Human;
 use pocketmine\entity\EntityFactory;
 use pocketmine\entity\Entity;
+use pocketmine\entity\Location;
 
 use SettingNPC\form\CreateForm;
+use SettingNPC\form\SettingForm;
+use SettingNPC\form\DeleteForm;
 
 use function explode;
 
@@ -53,6 +56,14 @@ final class SettingNPC{
     
     private $chat;
     public const TAG = "§c【 §fSettingNPC §c】 §7: ";
+
+    public function getLists() : array{
+        $arr = [];
+        foreach($this->npcdb as $npc => $v){
+            array_push($arr, $npc);
+        }
+        return $arr;
+    }
 
     public function EntitySpawn($player,$npcname, $command){
         $pos = $player->getPosition();
@@ -84,5 +95,29 @@ final class SettingNPC{
 
     public function CreateUI(Player $player) : void{
         $player->sendForm(new CreateForm());
+    }
+
+    public function SettingEvent (Player $player,String $text) : void{
+        Loader::getInstance()->getScheduler()->scheduleDelayedTask(new ClosureTask(function() use($player) : void {
+            if($player->isOnline()) {
+                $this->SettingUI($player,$text);
+            }
+        }), 20);
+    }
+
+    public function SettingUI(Player $player,String $text) : void{
+        $player->sendForm(new SettingForm($text));
+    }
+
+    public function DeleteEvent (Player $player) : void{
+        Loader::getInstance()->getScheduler()->scheduleDelayedTask(new ClosureTask(function() use($player) : void {
+            if($player->isOnline()) {
+                $this->DeleteUI($player);
+            }
+        }), 20);
+    }
+
+    public function DeleteUI(Player $player) : void{
+        $player->sendForm(new DeleteForm();
     }
 }

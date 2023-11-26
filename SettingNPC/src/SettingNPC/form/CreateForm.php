@@ -29,6 +29,7 @@ final class CreateForm implements Form{
     }
 
     public function handleResponse(Player $player, $data) : void{
+        $api = SettingNPC::getInstance();
         if($data === null) return;
         if(!isset($data[0])){
             $player->sendMessage(SettingNPC::TAG . '빈칸을 채워주세요.');
@@ -39,6 +40,6 @@ final class CreateForm implements Form{
             return;
         }
         $api->EntitySpawn($player,$data[0],$data[1]);
-        
+        return;
     }
 }
